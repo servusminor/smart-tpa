@@ -44,56 +44,83 @@ export default function ElearningLandingPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>(categories[0].key);
 
   return (
-    <div className="font-sans bg-white" style={{ fontFamily: 'InterTight, sans-serif' }}>
+    <div className="font-sans bg-white" style={{ fontFamily: 'InterTight, sans-serif', color: '#2B2E4A' }}>
       {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+      <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50" style={{ background: '#fff', borderBottom: '4px solid', borderImage: 'linear-gradient(90deg, #FFA500, #FF6F3C, #D32F2F) 1' }}>
         <nav className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-          <div className="text-2xl font-bold text-blue-700">SmartTPA</div>
-          <ul className="hidden md:flex gap-8 text-gray-700">
-            <li><a href="#" className="font-medium hover:text-blue-600 transition-colors">Beranda</a></li>
-            <li><a href="#courses" className="font-medium hover:text-blue-600 transition-colors">Kursus</a></li>
-            <li><a href="#about" className="font-medium hover:text-blue-600 transition-colors">Tentang</a></li>
-            <li><a href="#testimonials" className="font-medium hover:text-blue-600 transition-colors">Testimoni</a></li>
-            <li><a href="#faq" className="font-medium hover:text-blue-600 transition-colors">FAQ</a></li>
+          <div className="flex items-center">
+            <Image 
+              src="/logo.png" 
+              alt="SmartTPA Logo" 
+              width={200} 
+              height={200} 
+              style={{ objectFit: 'contain', width: 80, height: 80 }} 
+              priority
+            />
+          </div>
+          <ul className="hidden md:flex gap-8" style={{ color: '#2B2E4A' }}>
+            {['Beranda', 'Kursus', 'Tentang', 'Testimoni', 'FAQ'].map((item, idx) => (
+              <li key={item}>
+                <a
+                  href={
+                    item === 'Beranda' ? '#' :
+                    item === 'Kursus' ? '#courses' :
+                    item === 'Tentang' ? '#about' :
+                    item === 'Testimoni' ? '#testimonials' :
+                    item === 'FAQ' ? '#faq' : '#'
+                  }
+                  className="font-medium transition-colors px-2 py-1"
+                  style={{
+                    color: '#2B2E4A',
+                    borderBottom: '3px solid transparent',
+                    background: 'none',
+                  }}
+                  onMouseOver={e => (e.currentTarget.style.borderBottom = '3px solid #FFA500')}
+                  onMouseOut={e => (e.currentTarget.style.borderBottom = '3px solid transparent')}
+                >
+                  {item}
+                </a>
+              </li>
+            ))}
           </ul>
           <div className="flex gap-4">
-            <button className="text-blue-600 px-5 py-2.5 rounded font-medium hover:bg-blue-50 transition-colors">Masuk</button>
-            <button className="bg-blue-600 text-white px-6 py-2.5 rounded font-medium shadow hover:bg-blue-700 transition-colors">
-              <span className="text-white">Daftar</span>
+            <button className="px-5 py-2.5 rounded font-medium transition-colors" style={{ color: '#2B2E4A', border: '2px solid #FFB300', background: 'none' }}>Masuk</button>
+            <button className="px-6 py-2.5 rounded font-medium shadow transition-colors" style={{ background: '#FFB300', color: '#2B2E4A', boxShadow: '0 2px 8px #FFB30033' }}>
+              <span>Daftar</span>
             </button>
           </div>
         </nav>
       </header>
 
       {/* Hero Section */}
-      <section className="bg-white min-h-screen flex items-center" style={{ minHeight: '100vh' }}>
+      <section className="bg-white min-h-screen flex items-center" style={{ minHeight: '100vh', color: '#2B2E4A', background: '#fff' }}>
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center w-full">
           <div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-800 leading-tight tracking-tight">
-              SmartTPA <span className="text-blue-600"></span>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight tracking-tight" style={{ color: '#2B2E4A' }}>
+              SmartTPA <span style={{ background: 'linear-gradient(90deg, #FFA500, #FF6F3C, #D32F2F)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>E-Learning</span>
             </h1>
             <p className="text-gray-600 text-xl mb-12 max-w-3xl">
               Platform pembelajaran online terdepan dengan ribuan kursus berkualitas tinggi. Tingkatkan skill Anda bersama instruktur berpengalaman dan komunitas pembelajar yang aktif.
             </p>
             <div className="flex flex-col sm:flex-row gap-5">
-              <button className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-blue-700 transition-colors">
+              <button className="px-8 py-4 rounded-lg font-semibold shadow-lg transition-colors" style={{ background: '#FFB300', color: '#2B2E4A' }}>
                 Daftar Sekarang
               </button>
-              <button className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors">
-                <span className="group-hover:text-white">Lihat Kursus</span>
+              <button className="border-2 px-8 py-4 rounded-lg font-semibold transition-colors" style={{ borderColor: '#FFA500', color: '#FFA500' }}>
+                <span>Lihat Kursus</span>
               </button>
             </div>
             <div className="mt-12 flex items-center gap-10 text-sm text-gray-600">
               <div className="flex items-center gap-2">
-                <span className="text-blue-600 font-bold text-xl">50,000+</span>
+                <span className="font-bold text-xl" style={{ color: '#FF6F3C' }}>50,000+</span>
                 <span>Siswa Aktif</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-blue-600 font-bold text-xl">1,200+</span>
+                <span className="font-bold text-xl" style={{ color: '#FF6F3C' }}>1,200+</span>
                 <span>Kursus Tersedia</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-blue-600 font-bold text-xl">95%</span>
+                <span className="font-bold text-xl" style={{ color: '#FF6F3C' }}>95%</span>
                 <span>Tingkat Kepuasan</span>
               </div>
             </div>
@@ -109,8 +136,8 @@ export default function ElearningLandingPage() {
             />
             <div className="absolute -bottom-6 -left-6 bg-white p-5 rounded-xl shadow-lg">
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-blue-600 font-bold text-xl">📚</span>
+                <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #FFA500, #FF6F3C, #D32F2F)' }}>
+                  <span className="font-bold text-xl" style={{ color: '#fff' }}>📚</span>
                 </div>
                 <div>
                   <div className="font-semibold text-lg text-gray-800">Pembelajaran Interaktif</div>
@@ -123,9 +150,9 @@ export default function ElearningLandingPage() {
       </section>
 
       {/* Kategori Kursus Populer */}
-      <section id="courses" className="py-24 bg-white">
+      <section id="courses" className="py-24 bg-white" style={{ color: '#2B2E4A', background: '#fff' }}>
         <div className="max-w-7xl mx-auto px-6">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-800 leading-tight tracking-tight">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight tracking-tight" style={{ color: '#2B2E4A', borderBottom: '4px solid', borderImage: 'linear-gradient(90deg, #FFA500, #FF6F3C, #D32F2F) 1' }}>
             Explore Learning
           </h1>
           <p className="text-gray-600 text-xl mb-12 max-w-3xl">
@@ -133,52 +160,56 @@ export default function ElearningLandingPage() {
           </p>
           
           {/* Row kategori */}
-          <div className="flex gap-4 overflow-x-auto pb-6 mb-10">
+          <div className="flex gap-4 overflow-x-auto pb-6 mb-6">
             {categories.map((cat) => (
               <button
                 key={cat.key}
                 onClick={() => setSelectedCategory(cat.key)}
                 className={`px-7 py-3 rounded-full font-medium text-base whitespace-nowrap border transition-all ${
                   selectedCategory === cat.key 
-                    ? 'bg-blue-600 text-white border-blue-600 shadow-md' 
-                    : 'bg-white text-blue-600 border-blue-600 hover:bg-blue-50'
+                    ? '' 
+                    : ''
                 }`}
+                style={selectedCategory === cat.key
+                  ? { background: '#FFB300', color: '#2B2E4A', borderColor: '#FFB300', boxShadow: '0 2px 8px #FFB30033' }
+                  : { background: '#fff', color: '#FFA500', borderColor: '#FFA500' }}
               >
-                <span className={selectedCategory === cat.key ? 'text-white' : 'text-blue-600'}>{cat.label}</span>
+                <span style={selectedCategory === cat.key ? { color: '#2B2E4A' } : { color: '#FFA500' }}>{cat.label}</span>
               </button>
             ))}
           </div>
           
-          {/* Deskripsi kategori aktif */}
-          {/* Deskripsi kategori aktif dihapus */}
-          
           {/* Kursus per kategori */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-12 overflow-x-auto">
-            {(coursesByCategory as Record<string, Course[]>)[selectedCategory].slice(0, 8).map((course: Course, idx: number) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-6 overflow-x-auto">
+            {(
+              selectedCategory === 'all'
+                ? Object.values(coursesByCategory).flat()
+                : (coursesByCategory as Record<string, Course[]>)[selectedCategory]
+            ).slice(0, 8).map((course: Course, idx: number) => (
               <div
                 key={idx}
-                className="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-lg transition-shadow flex flex-col min-w-[220px] h-full group cursor-pointer"
-                style={{ transition: 'box-shadow 0.2s' }}
+                className="bg-white border rounded-2xl shadow-sm hover:shadow-lg transition-shadow flex flex-col min-w-[220px] h-full group cursor-pointer"
+                style={{ transition: 'box-shadow 0.2s', borderColor: '#FFA500', borderWidth: 1, borderStyle: 'solid' }}
               >
                 <div className="relative w-full h-40 mb-3">
                   <Image
                     src={course.img}
                     alt={course.title}
-                    className="rounded-t-lg object-cover"
+                    className="object-cover"
                     fill
-                    style={{ objectFit: 'cover', borderTopLeftRadius: '0.75rem', borderTopRightRadius: '0.75rem' }}
+                    style={{ objectFit: 'cover', borderTopLeftRadius: '1rem', borderTopRightRadius: '1rem' }}
                     sizes="(max-width: 768px) 100vw, 400px"
                   />
                 </div>
                 <div className="flex flex-col flex-1 px-4 pb-4 pt-2">
-                  <h3 className="font-bold text-base text-gray-900 mb-1 line-clamp-2 min-h-[48px]">{course.title}</h3>
-                  <p className="text-gray-600 text-sm mb-2 line-clamp-2 min-h-[40px]">{course.desc}</p>
+                  <h3 className="font-bold text-base mb-1 line-clamp-2 min-h-[48px]" style={{ color: '#2B2E4A' }}>{course.title}</h3>
+                  <p className="text-sm mb-2 line-clamp-2 min-h-[40px]" style={{ color: '#2B2E4A', opacity: 0.7 }}>{course.desc}</p>
                   <div className="mb-2"><StarRating rating={course.rating} /></div>
                   {course.price && (
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="text-lg font-bold text-gray-900">{course.price}</span>
+                      <span className="text-lg font-bold" style={{ color: '#FFB300' }}>{course.price}</span>
                       {course.oldPrice && (
-                        <span className="text-xs text-gray-400 line-through">{course.oldPrice}</span>
+                        <span className="text-xs" style={{ color: '#D32F2F', textDecoration: 'line-through' }}>{course.oldPrice}</span>
                       )}
                     </div>
                   )}
@@ -187,84 +218,91 @@ export default function ElearningLandingPage() {
               </div>
             ))}
           </div>
+
+          <div className="flex mb-10">
+            <button
+              className="px-8 py-3 rounded-lg font-semibold shadow-lg transition-colors text-base mt-4 mb-2"
+              style={{ background: '#FFB300', color: '#2B2E4A', boxShadow: '0 2px 8px #FFB30033', marginTop: '1.5rem', marginBottom: '0.5rem' }}
+              onClick={() => setSelectedCategory('all')}
+            >
+              Tampilkan Semua Pelatihan
+            </button>
+          </div>
+
         </div>
       </section>
+      
 
       {/* Package Section */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24" style={{ background: 'linear-gradient(135deg, #FFA500 0%, #FF6F3C 60%, #D32F2F 100%)', color: '#2B2E4A' }}>
         <div className="max-w-7xl mx-auto px-6">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-800 leading-tight tracking-tight">
-            Pilih Paket Belajar
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight tracking-tight" style={{ color: '#2B2E4A', borderBottom: '4px solid', borderImage: 'linear-gradient(90deg, #FFA500, #FF6F3C, #D32F2F) 1' }}>
+            Pilih Jenis Pelatihan
           </h1>
-          <p className="text-gray-600 text-xl mb-12 max-w-3xl">
-            Temukan paket yang sesuai dengan kebutuhan pembelajaran Anda
+          <p className="text-xl mb-12 max-w-3xl" style={{ color: '#2B2E4A', opacity: 0.7 }}>
+            Temukan layanan pelatihan yang sesuai kebutuhan Anda, mulai dari gratis hingga solusi untuk perusahaan. Semua konten dan fitur mudah dipahami dan bermanfaat untuk pengembangan diri maupun tim Anda.
           </p>
-         
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-4">
-            {/* Personal Plan */}
-            <div className="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-lg transition-shadow flex flex-col min-w-[220px] h-full group cursor-pointer p-6">
+            {/* Pelatihan Gratis */}
+            <div className="bg-white border rounded-lg shadow-sm hover:shadow-lg transition-shadow flex flex-col min-w-[220px] h-full group cursor-pointer p-6" style={{ borderColor: '#FFA500' }}>
               <div className="mb-4">
-                <span className="inline-block bg-blue-600 text-white text-xs font-bold px-3 py-1.5 rounded-full mb-2">Personal Plan</span>
-                <div className="font-bold text-lg text-blue-700 mb-1">For you</div>
-                <div className="text-xs text-gray-500 mb-1">Individual</div>
-                <div className="text-xs text-green-600 font-semibold mb-1">15% off for the first 1 year(s)</div>
-                <div className="text-lg font-bold text-gray-800 mb-1">Starting at <span className="line-through text-gray-400">Rp187,500</span><span className="ml-2 text-blue-600">Rp159,375</span> <span className="text-xs font-normal">/month</span></div>
-                <div className="text-xs text-gray-400 mb-2">Billed monthly or annually. Cancel anytime.</div>
+                <span className="inline-block text-white text-xs font-bold px-3 py-1.5 rounded-full mb-2" style={{ background: 'linear-gradient(90deg, #FFA500, #FF6F3C, #D32F2F)' }}>Pelatihan Gratis</span>
+                <div className="font-bold text-lg mb-1" style={{ color: '#2B2E4A' }}>Akses Materi Tanpa Biaya</div>
+                <div className="text-xs text-gray-500 mb-1">Untuk semua kalangan</div>
+                <div className="text-xs text-green-600 font-semibold mb-1">100% Gratis, tanpa syarat</div>
+                <div className="text-lg font-bold text-blue-600 mb-1">Rp0</div>
+                <div className="text-xs text-gray-400 mb-2">Akses video, materi, dan quiz tanpa biaya apapun.</div>
               </div>
               <ul className="mb-4 space-y-2 text-gray-700 text-xs">
-                <li>✓ Access to 26,000+ top courses</li>
-                <li>✓ Certification prep</li>
-                <li>✓ Goal-focused recommendations</li>
-                <li>✓ AI-powered coding exercises</li>
+                <li>✓ Materi dasar & populer</li>
+                <li>✓ Sertifikat digital gratis</li>
+                <li>✓ Komunitas diskusi</li>
+                <li>✓ Update materi rutin</li>
               </ul>
-              <button className="bg-blue-600 text-white px-4 py-2 rounded font-semibold hover:bg-blue-700 transition-colors mt-auto text-xs">Try for Free</button>
+              <button className="px-4 py-2 rounded font-semibold transition-colors mt-auto text-xs" style={{ background: '#FFB300', color: '#2B2E4A' }}>Mulai Belajar Gratis</button>
             </div>
-            {/* Team Plan */}
-            <div className="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-lg transition-shadow flex flex-col min-w-[220px] h-full group cursor-pointer p-6">
+            {/* Pelatihan Paket */}
+            <div className="bg-white border rounded-lg shadow-sm hover:shadow-lg transition-shadow flex flex-col min-w-[220px] h-full group cursor-pointer p-6" style={{ borderColor: '#FFA500' }}>
               <div className="mb-4">
-                <span className="inline-block bg-green-600 text-white text-xs font-bold px-3 py-1.5 rounded-full mb-2">Team Plan</span>
-                <div className="font-bold text-lg text-green-700 mb-1">For your team</div>
-                <div className="text-xs text-gray-500 mb-1">2 to 20 people</div>
-                <div className="text-lg font-bold text-gray-800 mb-1">Rp478,000 <span className="text-xs font-normal">a month per user</span></div>
-                <div className="text-xs text-gray-400 mb-2">Billed annually. Cancel anytime.</div>
+                <span className="inline-block text-white text-xs font-bold px-3 py-1.5 rounded-full mb-2" style={{ background: 'linear-gradient(90deg, #FFA500, #FF6F3C, #D32F2F)' }}>Pelatihan Paket</span>
+                <div className="font-bold text-lg mb-1" style={{ color: '#2B2E4A' }}>Belajar Lebih Lengkap & Fleksibel</div>
+                <div className="text-xs text-gray-500 mb-1">Untuk individu & kelompok</div>
+                <div className="text-xs text-green-600 font-semibold mb-1">Diskon hingga 20% untuk paket tahunan</div>
+                <div className="text-lg font-bold text-blue-600 mb-1">Mulai Rp150.000/bulan</div>
+                <div className="text-xs text-gray-400 mb-2">Akses ribuan kursus premium, fitur mentoring, dan sertifikat resmi.</div>
               </div>
               <ul className="mb-4 space-y-2 text-gray-700 text-xs">
-                <li>✓ Access to 13,000+ top courses</li>
-                <li>✓ Certification prep</li>
-                <li>✓ Goal-focused recommendations</li>
-                <li>✓ AI-powered coding exercises</li>
-                <li>✓ Analytics and adoption reports</li>
+                <li>✓ Semua fitur pelatihan gratis</li>
+                <li>✓ Kelas premium & live session</li>
+                <li>✓ Konsultasi mentor</li>
+                <li>✓ Sertifikat resmi SmartTPA</li>
               </ul>
-              <button className="bg-green-600 text-white px-4 py-2 rounded font-semibold hover:bg-green-700 transition-colors mt-auto text-xs">Contact Sales</button>
+              <button className="px-4 py-2 rounded font-semibold transition-colors mt-auto text-xs" style={{ background: '#FFB300', color: '#2B2E4A' }}>Lihat Paket</button>
             </div>
-            {/* Enterprise Plan */}
-            <div className="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-lg transition-shadow flex flex-col min-w-[220px] h-full group cursor-pointer p-6">
+            {/* Pelatihan Enterprise */}
+            <div className="bg-white border rounded-lg shadow-sm hover:shadow-lg transition-shadow flex flex-col min-w-[220px] h-full group cursor-pointer p-6" style={{ borderColor: '#FFA500' }}>
               <div className="mb-4">
-                <span className="inline-block bg-yellow-600 text-white text-xs font-bold px-3 py-1.5 rounded-full mb-2">Enterprise Plan</span>
-                <div className="font-bold text-lg text-yellow-700 mb-1">For your whole organization</div>
-                <div className="text-xs text-gray-500 mb-1">More than 20 people</div>
-                <div className="text-lg font-bold text-gray-800 mb-1">Contact sales for pricing</div>
+                <span className="inline-block text-white text-xs font-bold px-3 py-1.5 rounded-full mb-2" style={{ background: 'linear-gradient(90deg, #FFA500, #FF6F3C, #D32F2F)' }}>Pelatihan Enterprise</span>
+                <div className="font-bold text-lg mb-1" style={{ color: '#2B2E4A' }}>Solusi untuk Perusahaan & Organisasi</div>
+                <div className="text-xs text-gray-500 mb-1">Untuk tim & perusahaan</div>
+                <div className="text-lg font-bold text-blue-600 mb-1">Harga khusus & custom</div>
+                <div className="text-xs text-gray-400 mb-2">Pelatihan karyawan, pelaporan progres, dan integrasi sistem HR.</div>
               </div>
               <ul className="mb-4 space-y-2 text-gray-700 text-xs">
-                <li>✓ Access to 30,000+ top courses</li>
-                <li>✓ Certification prep</li>
-                <li>✓ Goal-focused recommendations</li>
-                <li>✓ AI-powered coding exercises</li>
-                <li>✓ Advanced analytics and insights</li>
-                <li>✓ Dedicated customer success team</li>
-                <li>✓ International course collection featuring 15 languages</li>
-                <li>✓ Customizable content</li>
-                <li>✓ Hands-on tech training with add-on</li>
-                <li>✓ Strategic implementation services with add-on</li>
+                <li>✓ Semua fitur paket</li>
+                <li>✓ Dashboard monitoring tim</li>
+                <li>✓ Laporan perkembangan karyawan</li>
+                <li>✓ Integrasi sistem perusahaan</li>
+                <li>✓ Konsultasi & support prioritas</li>
               </ul>
-              <button className="bg-yellow-600 text-white px-4 py-2 rounded font-semibold hover:bg-yellow-700 transition-colors mt-auto text-xs">Contact Sales</button>
+              <button className="px-4 py-2 rounded font-semibold transition-colors mt-auto text-xs" style={{ background: '#FFB300', color: '#2B2E4A' }}>Hubungi Kami</button>
             </div>
           </div>
         </div>
       </section>
 
       {/* Testimoni */}
-      <section id="testimonials" className="py-24 bg-white">
+      <section id="testimonials" className="py-24 bg-white" style={{ color: '#2B2E4A', background: '#fff' }}>
         <div className="max-w-7xl mx-auto px-6">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-800 leading-tight tracking-tight">
             Testimoni Pengguna
@@ -315,30 +353,30 @@ export default function ElearningLandingPage() {
       </section>
 
       {/* Footer dengan alamat dan social media */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="py-12" style={{ background: '#2B2E4A', color: '#fff' }}>
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-start gap-8">
           <div>
-            <div className="text-2xl font-bold mb-2 text-white">SmartTPA</div>
-            <div className="text-sm text-white mb-2">Jl. Contoh Alamat No. 123, Jakarta, Indonesia</div>
-            <div className="text-sm text-white">Email: info@smarttpa.com</div>
-            <div className="text-sm text-white">Telepon: +62 812-3456-7890</div>
+            <div className="text-2xl font-bold mb-2" style={{ color: '#FFB300' }}>SmartTPA</div>
+            <div className="text-sm mb-2" style={{ color: '#fff', opacity: 0.95, fontWeight: 500 }}>Jl. Contoh Alamat No. 123, Jakarta, Indonesia</div>
+            <div className="text-sm" style={{ color: '#fff', opacity: 0.95, fontWeight: 500 }}>Email: <span style={{ color: '#FFB300' }}>info@smarttpa.com</span></div>
+            <div className="text-sm" style={{ color: '#fff', opacity: 0.95, fontWeight: 500 }}>Telepon: <span style={{ color: '#FFB300' }}>+62 812-3456-7890</span></div>
           </div>
           <div>
-            <div className="font-semibold mb-2 text-white">Ikuti Kami</div>
+            <div className="font-semibold mb-2" style={{ color: '#FFB300' }}>Ikuti Kami</div>
             <div className="flex gap-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-blue-400 transition-colors">
-                <svg width="24" height="24" fill="currentColor" className="text-white"><path d="M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.877v-6.987h-2.54v-2.89h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.632.771-1.632 1.562v1.875h2.773l-.443 2.89h-2.33v6.987C18.343 21.128 22 16.991 22 12"/></svg>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:opacity-80 transition-colors">
+                <svg width="24" height="24" fill="currentColor" style={{ color: '#FFA500' }}><path d="M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.877v-6.987h-2.54v-2.89h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.632.771-1.632 1.562v1.875h2.773l-.443 2.89h-2.33v6.987C18.343 21.128 22 16.991 22 12"/></svg>
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-pink-400 transition-colors">
-                <svg width="24" height="24" fill="currentColor" className="text-white"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5zm4.25 3.25a5.25 5.25 0 1 1 0 10.5 5.25 5.25 0 0 1 0-10.5zm0 1.5a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5zm5.25.75a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:opacity-80 transition-colors">
+                <svg width="24" height="24" fill="currentColor" style={{ color: '#FF6F3C' }}><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5zm4.25 3.25a5.25 5.25 0 1 1 0 10.5 5.25 5.25 0 0 1 0-10.5zm0 1.5a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5zm5.25.75a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-blue-300 transition-colors">
-                <svg width="24" height="24" fill="currentColor" className="text-white"><path d="M22.46 5.924c-.793.352-1.645.59-2.54.698a4.48 4.48 0 0 0 1.963-2.475 8.94 8.94 0 0 1-2.828 1.082A4.48 4.48 0 0 0 11.07 9.03c0 .352.04.695.116 1.022C7.728 9.89 4.1 8.1 1.671 5.149a4.48 4.48 0 0 0-.606 2.254c0 1.555.792 2.927 2.002 3.732a4.48 4.48 0 0 1-2.03-.561v.057a4.48 4.48 0 0 0 3.594 4.393c-.193.053-.397.081-.607.081-.148 0-.292-.014-.432-.04.293.915 1.144 1.58 2.152 1.598A8.98 8.98 0 0 1 2 19.54a12.68 12.68 0 0 0 6.88 2.017c8.253 0 12.77-6.833 12.77-12.77 0-.195-.004-.39-.013-.583A9.14 9.14 0 0 0 24 4.59a8.93 8.93 0 0 1-2.54.698z"/></svg>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:opacity-80 transition-colors">
+                <svg width="24" height="24" fill="currentColor" style={{ color: '#D32F2F' }}><path d="M22.46 5.924c-.793.352-1.645.59-2.54.698a4.48 4.48 0 0 0 1.963-2.475 8.94 8.94 0 0 1-2.828 1.082A4.48 4.48 0 0 0 11.07 9.03c0 .352.04.695.116 1.022C7.728 9.89 4.1 8.1 1.671 5.149a4.48 4.48 0 0 0-.606 2.254c0 1.555.792 2.927 2.002 3.732a4.48 4.48 0 0 1-2.03-.561v.057a4.48 4.48 0 0 0 3.594 4.393c-.193.053-.397.081-.607.081-.148 0-.292-.014-.432-.04.293.915 1.144 1.58 2.152 1.598A8.98 8.98 0 0 1 2 19.54a12.68 12.68 0 0 0 6.88 2.017c8.253 0 12.77-6.833 12.77-12.77 0-.195-.004-.39-.013-.583A9.14 9.14 0 0 0 24 4.59a8.93 8.93 0 0 1-2.54.698z"/></svg>
               </a>
             </div>
           </div>
         </div>
-        <div className="mt-8 text-center text-xs text-white/70">&copy; {new Date().getFullYear()} SmartTPA. All rights reserved.</div>
+        <div className="mt-8 text-center text-xs" style={{ color: '#FFB300', fontWeight: 600, textShadow: '0 1px 4px #2B2E4A' }}>&copy; {new Date().getFullYear()} SmartTPA. All rights reserved.</div>
       </footer>
     </div>
   );
