@@ -1,3 +1,68 @@
+/* Font rules from JSON mapping */
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap');
+
+html, body {
+  font-family: 'Inter Tight', InterTight, Arial, sans-serif;
+  font-size: 16px;
+  color: rgb(0,0,0);
+  font-style: normal;
+  font-weight: 400;
+}
+
+body {
+  font-size: 14px;
+  color: rgb(34,34,34);
+}
+
+div {
+  font-family: 'Inter Tight', InterTight, Arial, sans-serif;
+  font-size: 14px;
+  color: rgb(34,34,34);
+  font-style: normal;
+  font-weight: 400;
+}
+
+a {
+  font-family: 'Inter Tight', InterTight, Arial, sans-serif;
+  font-size: 14px;
+  color: rgb(34,34,34);
+  font-style: normal;
+  font-weight: 400;
+}
+
+span {
+  font-family: 'Inter Tight', InterTight, Arial, sans-serif;
+  font-size: 14px;
+  color: rgb(34,34,34);
+  font-style: normal;
+  font-weight: 400;
+}
+
+h1 {
+  font-family: 'Inter Tight', InterTight, Arial, sans-serif;
+  font-size: 28px;
+  color: rgb(34,34,34);
+  font-style: normal;
+  font-weight: 700;
+}
+
+h2 {
+  font-family: 'Inter Tight', InterTight, Arial, sans-serif;
+  font-size: 14px;
+  color: rgb(34,34,34);
+  font-style: normal;
+  font-weight: 400;
+}
+
+header, nav, form, button, input, main {
+  font-family: 'Inter Tight', InterTight, Arial, sans-serif;
+  font-size: 14px;
+  color: rgb(34,34,34);
+  font-style: normal;
+  font-weight: 400;
+}
+
+/* For all other elements in the JSON, add similar rules as needed */
 @import "tailwindcss";
 
 :root {
